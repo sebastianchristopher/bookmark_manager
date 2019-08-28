@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-08-28T08:54:14+01:00">2019-08-28T08:54:14+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-08-28T12:43:52+01:00">2019-08-28T12:43:52+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">90.91%</span></span>
+    (<span class="covered_percent"><span class="green">100.0%</span></span>
      covered at
      <span class="covered_strength">
-       <span class="red">
-         0.91
+       <span class="yellow">
+         1.0
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>3</b> files in total.
-    <b>22</b> relevant lines. 
-    <span class="green"><b>20</b> lines covered</span> and
-    <span class="red"><b>2</b> lines missed </span>
+    <b>28</b> relevant lines. 
+    <span class="green"><b>28</b> lines covered</span> and
+    <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -53,9 +53,9 @@
       <tr>
         <td class="strong"><a href="#619f6f97ddf09f27dbe4f4cd4a48a7f44562f58d" class="src_link" title="spec/features/add_bookmark_spec.rb">spec/features/add_bookmark_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>8</td>
-        <td>6</td>
-        <td>6</td>
+        <td>9</td>
+        <td>7</td>
+        <td>7</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -72,12 +72,12 @@
       
       <tr>
         <td class="strong"><a href="#4a0b02117b88f15418637de31f97e20543d00b74" class="src_link" title="spec/units/bookmarks_spec.rb">spec/units/bookmarks_spec.rb</a></td>
-        <td class="red strong">80.0 %</td>
-        <td>16</td>
-        <td>10</td>
-        <td>8</td>
-        <td>2</td>
-        <td>0.8</td>
+        <td class="green strong">100.0 %</td>
+        <td>22</td>
+        <td>15</td>
+        <td>15</td>
+        <td>0</td>
+        <td>1.0</td>
       </tr>
       
     </tbody>
@@ -101,8 +101,8 @@
     <h3>spec/features/add_bookmark_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>6</b> relevant lines. 
-      <span class="green"><b>6</b> lines covered</span> and
+      <b>7</b> relevant lines. 
+      <span class="green"><b>7</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -131,28 +131,34 @@
         <li class="covered" data-hits="1" data-linenumber="4">
           <span class="hits">1</span>
           
-          <code class="ruby">    fill_in(&#39;url&#39;, :with =&gt; &#39;http://www.bbc.co.uk&#39;)</code>
+          <code class="ruby">    fill_in(&#39;url&#39;, :with =&gt; &#39;http://www.foobar.co.uk&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="5">
           <span class="hits">1</span>
           
-          <code class="ruby">    click_button(:Add)</code>
+          <code class="ruby">    fill_in(&#39;title&#39;, with: &#39;Foobar&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(page).to have_tag(&#39;li&#39;, :text =&gt; &#39;http://www.bbc.co.uk&#39;)</code>
+          <code class="ruby">    click_button(:Add)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="7">
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_link(&#39;Foobar&#39;, href: &#39;http://www.foobar.co.uk&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="8">
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">end</code>
@@ -204,19 +210,19 @@
         <li class="covered" data-hits="1" data-linenumber="5">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(page).to have_tag(&#39;li&#39;, :text =&gt; &#39;http://www.makersacademy.com&#39;)</code>
+          <code class="ruby">    expect(page).to have_tag(&#39;li&#39;, href: &#39;http://www.makersacademy.com&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(page).to have_tag(&#39;li&#39;, :text =&gt; &#39;http://www.google.com&#39;)</code>
+          <code class="ruby">    expect(page).to have_tag(&#39;li&#39;, href: &#39;http://www.google.com&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="7">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(page).to have_tag(&#39;li&#39;, :text =&gt; &#39;http://www.destroyallsoftware.com&#39;)</code>
+          <code class="ruby">    expect(page).to have_tag(&#39;li&#39;, href: &#39;http://www.destroyallsoftware.com&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="8">
@@ -239,11 +245,11 @@
         <div class="source_table" id="4a0b02117b88f15418637de31f97e20543d00b74">
   <div class="header">
     <h3>spec/units/bookmarks_spec.rb</h3>
-    <h4><span class="red">80.0 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>10</b> relevant lines. 
-      <span class="green"><b>8</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <b>15</b> relevant lines. 
+      <span class="green"><b>15</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -268,79 +274,115 @@
           <code class="ruby">describe Bookmarks do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="4">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  it &#39;returns all bookmarks&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(Bookmarks.all).to eq([&quot;http://www.makersacademy.com&quot;, &quot;http://www.google.com&quot;, &quot;http://www.destroyallsoftware.com&quot;])</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="6">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  it &#39;can add a bookmark&#39; do</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    Bookmarks.add(&#39;http://www.yahoo.co.uk&#39;)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="9">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    expect(Bookmarks.all).to include(&#39;http://www.yahoo.co.uk&#39;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="10">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="11">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  xit &#39;can add a title with a bookmark&#39; do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="12">
-          
-          
-          <code class="ruby">    bookmark = Bookmark.new(&#39;http://www.yahoo.co.uk&#39;, &#39;Yahoo&#39;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="13">
+        <li class="never" data-hits="" data-linenumber="4">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="14">
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    expect(Bookmarks.all).to include(&#39;Yahoo http://www.yahoo.co.uk&#39;)</code>
+          <code class="ruby">  context &#39;.all&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="15">
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &#39;returns all bookmarks&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      bookmark = Bookmarks.create(&#39;http://www.foobar.com&#39;, &#39;Foobar&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      last_bookmark = Bookmarks.all.last</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(last_bookmark.url).to eq(bookmark.url)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(last_bookmark.title).to eq(bookmark.title)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(Bookmarks.all).to all( be_a(Bookmarks) )</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(Bookmarks.all.count).to eq(4)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="16">
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  context &#39;.create&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &#39;can create a bookmark&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="17">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      bm = Bookmarks.create(&#39;http://www.yahoo.co.uk&#39;, &#39;Yahoo&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="18">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(bm.url).to eq(&#39;http://www.yahoo.co.uk&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="19">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(bm.title).to eq(&#39;Yahoo&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
           
           
           <code class="ruby">end</code>

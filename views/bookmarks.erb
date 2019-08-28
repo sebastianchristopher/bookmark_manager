@@ -1,6 +1,7 @@
 <h1>Bookmarks:</h1>
+<p><%= @bookmarks.first.url %>
 <ol>
   <% @bookmarks.each do |bookmark| %>
-    <li><a href=<%= bookmark %>><%= bookmark %></a></li>
+    <li><a href='<%= bookmark.url %>'><%= bookmark.title %></a></li>
   <% end %>
 </ol>

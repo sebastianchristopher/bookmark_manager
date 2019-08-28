@@ -1,16 +1,22 @@
 require 'bookmarks'
 
 describe Bookmarks do
-  it 'returns all bookmarks' do
-    expect(Bookmarks.all).to eq(["http://www.makersacademy.com", "http://www.google.com", "http://www.destroyallsoftware.com"])
-  end
-  it 'can add a bookmark' do
-    Bookmarks.add('http://www.yahoo.co.uk')
-    expect(Bookmarks.all).to include('http://www.yahoo.co.uk')
-  end
-  xit 'can add a title with a bookmark' do
-    bookmark = Bookmark.new('http://www.yahoo.co.uk', 'Yahoo')
 
-    expect(Bookmarks.all).to include('Yahoo http://www.yahoo.co.uk')
+  context '.all' do
+    it 'returns all bookmarks' do
+      bookmark = Bookmarks.create('http://www.foobar.com', 'Foobar')
+      last_bookmark = Bookmarks.all.last
+      expect(last_bookmark.url).to eq(bookmark.url)
+      expect(last_bookmark.title).to eq(bookmark.title)
+      expect(Bookmarks.all).to all( be_a(Bookmarks) )
+      expect(Bookmarks.all.count).to eq(4)
+    end
+  end
+  context '.create' do
+    it 'can create a bookmark' do
+      bm = Bookmarks.create('http://www.yahoo.co.uk', 'Yahoo')
+      expect(bm.url).to eq('http://www.yahoo.co.uk')
+      expect(bm.title).to eq('Yahoo')
+    end
   end
 end
