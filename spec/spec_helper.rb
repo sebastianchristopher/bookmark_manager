@@ -18,8 +18,7 @@ require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
 require 'rspec-html-matchers'
-
-# require_relative 'features/web_helpers.rb'
+require_relative './setup_test_database.rb'
 # require_relative 'units/unit_helpers.rb'
 
 ENV['RACK_ENV'] = 'test'
@@ -46,10 +45,7 @@ RSpec.configure do |config|
   # html matchers
 
   config.before(:each) do
-    con = PG.connect :dbname => 'bookmark_manager_test'
-    con.exec 'TRUNCATE bookmarks;'
-    con.exec "INSERT INTO bookmarks(url) VALUES('http://www.makersacademy.com'),('http://www.google.com'),('http://www.destroyallsoftware.com'),('http://www.google.com/search?q=wizard+of+oz');"
-    con.close
+    setup_test_database
   end
 
   config.expect_with :rspec do |expectations|
