@@ -2,32 +2,38 @@ class Bookmarks
   def self.all
     con = db_connection
     rs = con.exec 'SELECT * FROM bookmarks;'
-    rs.each_with_object(Array.new) { |row, bookmarks|
-      bookmarks << Bookmarks.new(row['url'], row['title'])
-    }
+    # rs.each_with_object(Array.new) { |row, bookmarks|
+    #   bookmarks << Bookmarks.new(row['url'], row['title'], row['id'])
+    # }
+    rs.map { |row| Bookmarks.new(row['url'], row['title'], row['id']) }
   end
 
   def self.create(url, title)
     con = db_connection
-    con.exec "INSERT INTO bookmarks(url, title) VALUES('#{url}','#{title}');"
-    Bookmarks.new(url, title)
+    rs = con.exec "INSERT INTO bookmarks(url, title) VALUES('#{url}','#{title}') RETURNING *;"
+    Bookmarks.new(rs[0]['url'], rs[0]['title'], rs[0]['id'])
   end
 
-  attr_reader :url, :title
+  def self.delete(id)
+    con = db_connection
+    con.exec "DELETE FROM bookmarks WHERE id = #{id};"
+  end
 
-  def initialize(url, title)
+  attr_reader :url, :title, :id
+
+  def initialize(url, title, id)
     @url = url
     @title = title
+    @id = id
   end
 
-  private
+  private_class_method
 
   def self.db_connection
     if ENV['ENVIRONMENT'] == 'test'
-      db_name = 'bookmark_manager_test'
+      PG.connect dbname: 'bookmark_manager_test'
     else
-      db_name = 'bookmark_manager'
+      PG.connect dbname: 'bookmark_manager'
     end
-    PG.connect :dbname => db_name
   end
 end
