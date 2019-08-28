@@ -23,6 +23,7 @@ require 'rspec-html-matchers'
 # require_relative 'units/unit_helpers.rb'
 
 ENV['RACK_ENV'] = 'test'
+ENV['ENVIRONMENT'] = 'test'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
@@ -43,6 +44,13 @@ RSpec.configure do |config|
 
   config.include RSpecHtmlMatchers
   # html matchers
+
+  config.before(:each) do
+    con = PG.connect :dbname => 'bookmark_manager_test'
+    con.exec 'TRUNCATE bookmarks;'
+    con.exec "INSERT INTO bookmarks(url) VALUES('http://www.makersacademy.com'),('http://www.google.com'),('http://www.destroyallsoftware.com'),('http://www.google.com/search?q=wizard+of+oz');"
+    con.close
+  end
 
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`

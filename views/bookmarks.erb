@@ -1,5 +1,9 @@
 <ol>
-  <% @bookmarks.each { |bookmark| %>
+  <% @bookmarks.each do |bookmark| %>
     <li><a href=<%= bookmark %>><%= bookmark %></a></li>
-  <% } %>
+  <% end %>
 </ol>
+<br><br>
+<form name='add-bookmark' action='/add-bookmark' method='POST'>
+  url: <input type='text' name='url'> <input type='submit' value='Add'>
+</form>

@@ -9,9 +9,13 @@ class BookmarkApp < Sinatra::Base
   end
 
   get '/bookmarks' do
-    p ENV['RACK_ENV']
     @bookmarks = Bookmarks.all
     erb(:bookmarks)
+  end
+
+  post '/add-bookmark' do
+    Bookmarks.add(params[:url])
+    redirect '/bookmarks'
   end
 
   run! if app_file == $0
