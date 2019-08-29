@@ -24,7 +24,8 @@ class Bookmarks
 
   def self.edit(id, url, title)
     con = db_connection
-    con.exec "UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = #{id};"
+    rs = con.exec "UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = #{id}  RETURNING *;"
+    Bookmarks.new(rs[0]['url'], rs[0]['title'], rs[0]['id'])
   end
 
   attr_reader :url, :title, :id

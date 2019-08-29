@@ -1,17 +1,23 @@
-<h1>Bookmarks:</h1>
-<ol>
-  <% @bookmarks.each do |bookmark| %>
-    <li class='bookmark'>
-      <a href='<%= bookmark.url %>'>
-        <%= bookmark.title %>
-      </a>
-      <form action="/bookmarks/<%= bookmark.id %>/delete" method="post">
-        <input id="hidden" type="hidden" name="_method" value="delete">
-        <input type="submit" value="delete">
-      </form>
-      <form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
-        <input type="submit" value="edit" />
-      </form>
-    </li>
-  <% end %>
-</ol>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <h1>Bookmarks:</h1>
+    <ol>
+      <% @bookmarks.each do |bookmark| %>
+        <li class='bookmark'>
+          <a href='<%= bookmark.url %>'><%= bookmark.title %></a>
+          <form action="/bookmarks/<%= bookmark.id %>/delete" method="post">
+            <input id="hidden" type="hidden" name="_method" value="delete">
+            <input type="submit" value="delete">
+          </form>
+          <form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
+            <input type="submit" value="edit" />
+          </form>
+        </li>
+      <% end %>
+    </ol>
+  </body>
+</html>
