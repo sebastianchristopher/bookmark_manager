@@ -17,6 +17,11 @@ class BookmarkApp < Sinatra::Base
     erb(:add_bookmark)
   end
 
+  get '/bookmarks/:id/edit' do
+    # Bookmarks.delete(params[:id])
+    redirect '/bookmarks'
+  end
+
   delete '/bookmarks/:id/delete' do
     Bookmarks.delete(params[:id])
     redirect '/bookmarks'

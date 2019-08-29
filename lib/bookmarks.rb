@@ -19,6 +19,12 @@ class Bookmarks
     con.exec "DELETE FROM bookmarks WHERE id = #{id};"
   end
 
+  def self.find(id)
+    con = db_connection
+    rs = con.exec "SELECT * FROM bookmarks WHERE id = '#{id}';"
+    Bookmarks.new(rs[0]['url'], rs[0]['title'], rs[0]['id']) unless rs.to_a.empty?
+  end
+
   attr_reader :url, :title, :id
 
   def initialize(url, title, id)
