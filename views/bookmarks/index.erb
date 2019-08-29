@@ -8,7 +8,7 @@
     <ol>
       <% @bookmarks.each do |bookmark| %>
         <li class='bookmark'>
-          <a href='<%= bookmark.url %>'><%= bookmark.title %></a>
+          <a class='bookmark-item' href='<%= bookmark.url %>'><%= bookmark.title %></a>
           <form action="/bookmarks/<%= bookmark.id %>/delete" method="post">
             <input id="hidden" type="hidden" name="_method" value="delete">
             <input type="submit" value="delete">
@@ -16,7 +16,15 @@
           <form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
             <input type="submit" value="edit" />
           </form>
+          <form action="/bookmarks/comments/<%= bookmark.id %>/edit" method="get">
+            <input type="submit" value="add comment" />
+          </form>
+        <% bookmark.comments.each do |comment| %>
+          <ul>
+            <li><%= comment.text %></li>
+          </ul>
         </li>
+        <% end %>
       <% end %>
     </ol>
     <h3 style='color:red'><%= flash[:notice] %> </h3>

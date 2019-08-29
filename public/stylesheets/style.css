@@ -1,3 +1,6 @@
 form {
     display: inline-block; //Or display: inline;
 }
+.bookmark-item {
+  font-size: 2em;
+}

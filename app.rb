@@ -3,6 +3,7 @@ require 'sinatra/flash'
 require 'pg'
 require 'uri'
 require_relative 'lib/bookmarks'
+require_relative 'lib/comment'
 require_relative 'lib/database_connection_setup'
 
 class BookmarkApp < Sinatra::Base
@@ -15,17 +16,27 @@ class BookmarkApp < Sinatra::Base
 
   get '/bookmarks' do
     @bookmarks = Bookmarks.all
-    erb(:bookmarks)
+    erb(:'bookmarks/index')
   end
 
   get '/bookmarks/new' do
-    erb(:add_bookmark)
+    erb(:'bookmarks/new')
   end
 
   get '/bookmarks/:id/edit' do
     @bookmark = Bookmarks.find(params[:id])
     redirect '/bookmarks' if @bookmark.nil?
-    erb(:edit)
+    erb(:'bookmarks/edit')
+  end
+
+  get '/bookmarks/comments/:id/edit' do
+    @id = params[:id]
+    erb(:'comments/index')
+  end
+
+  post '/bookmarks/comments' do
+    Comment.create(params[:id], params[:text])
+    redirect '/bookmarks'
   end
 
   patch '/bookmarks/:id' do

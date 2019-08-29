@@ -32,6 +32,11 @@ class Bookmarks
     @id = id
   end
 
+  def comments
+    rs = DatabaseConnection.query("SELECT * FROM comments WHERE bookmark_id = #{@id} ORDER BY id;")
+    rs.map { |row| Comment.new(row['id'], row['text'], row['bookmark_id']) }
+  end
+
   private_class_method def self.valid_url?(url)
     # (url =~ URI::regexp).nil? == false
     (url =~ URI::DEFAULT_PARSER.make_regexp).nil? == false

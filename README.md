@@ -18,4 +18,9 @@ As a user
 So I can identify bookmarks more easily
 I want to be able to add a title
 ```
+```
+As a user
+So I can read my comments
+I want to be able to store comments on a bookmark
+```
 ![domain_model](./images/model_1.jpeg)

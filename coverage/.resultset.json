@@ -20,6 +20,17 @@
         null,
         null
       ],
+      "/Users/student/projects/bookmark_manager/spec/features/add_comments_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/student/projects/bookmark_manager/spec/features/edit_bookmark_spec.rb": [
         1,
         1,
@@ -132,15 +143,27 @@
         null,
         null,
         null,
-        1,
-        1,
-        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/student/projects/bookmark_manager/spec/units/comment_spec.rb": [
         1,
         null,
         1,
         1,
         1,
-        null,
+        1,
+        1,
+        1,
         null,
         null
       ],
@@ -162,6 +185,6 @@
         null
       ]
     },
-    "timestamp": 1567091278
+    "timestamp": 1567111716
   }
 }
