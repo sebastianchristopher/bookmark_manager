@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'pg'
+require 'uri'
 require_relative 'lib/bookmarks'
 require_relative 'lib/database_connection_setup'
 
@@ -23,13 +24,8 @@ class BookmarkApp < Sinatra::Base
 
   get '/bookmarks/:id/edit' do
     @bookmark = Bookmarks.find(params[:id])
-    if @bookmark.nil?
-      flash[:notice] = 'Bookmark id not found'
-      flash[:notice]
-      # redirect '/bookmarks'
-    else
-      erb(:edit)
-    end
+    redirect '/bookmarks' if @bookmark.nil?
+    erb(:edit)
   end
 
   patch '/bookmarks/:id' do
@@ -43,7 +39,11 @@ class BookmarkApp < Sinatra::Base
   end
 
   post '/bookmarks' do
-    Bookmarks.create(params[:url], params[:title])
+    if Bookmarks.valid_url?(params[:url])
+      Bookmarks.create(params[:url], params[:title])
+    else
+      flash[:notice] = 'Bookmark id not found'
+    end
     redirect '/bookmarks'
   end
 

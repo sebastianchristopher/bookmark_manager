@@ -30,4 +30,11 @@ class Bookmarks
     @title = title
     @id = id
   end
+
+  # private_class_method
+
+  def self.valid_url?(url)
+    # (url =~ URI::regexp).nil? == false
+    (url =~ URI::DEFAULT_PARSER.make_regexp).nil? == false
+  end
 end
