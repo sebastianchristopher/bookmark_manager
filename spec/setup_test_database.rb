@@ -1,12 +1,11 @@
+require_relative '../lib/database_connection'
 require 'pg'
 
 def setup_test_database
-  con = PG.connect dbname: 'bookmark_manager_test'
-  con.exec 'TRUNCATE bookmarks;'
-  con.exec "ALTER SEQUENCE bookmarks_id_seq RESTART WITH 1;"
-  con.exec "INSERT INTO bookmarks(url, title) VALUES
+  DatabaseConnection.query('TRUNCATE bookmarks;')
+  DatabaseConnection.query('ALTER SEQUENCE bookmarks_id_seq RESTART WITH 1;')
+  DatabaseConnection.query("INSERT INTO bookmarks(url, title) VALUES
   ('http://www.makersacademy.com', 'Makers'),
   ('http://www.google.com', 'Google'),
-  ('http://www.destroyallsoftware.com', 'Destroy All Software');"
-  con.close
+  ('http://www.destroyallsoftware.com', 'Destroy All Software');")
 end
