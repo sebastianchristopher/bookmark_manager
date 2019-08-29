@@ -2,10 +2,17 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require 'pg'
 require_relative 'lib/bookmarks'
+require_relative 'lib/database_connection'
 
 class BookmarkApp < Sinatra::Base
   enable :method_override, :sessions
   register Sinatra::Flash
+
+  if ENV['ENVIRONMENT'] == 'test'
+    DatabaseConnection.setup('bookmark_manager_test')
+  else
+    DatabaseConnection.setup('bookmark_manager')
+  end
 
   get '/' do
     erb(:index)
