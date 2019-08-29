@@ -1,5 +1,4 @@
 feature '/bookmarks' do
-
   scenario 'show list of saved bookmarks' do
     visit '/bookmarks'
     expect(page).to have_tag('li', href: 'http://www.makersacademy.com')

@@ -2,9 +2,6 @@ class Bookmarks
   def self.all
     con = db_connection
     rs = con.exec 'SELECT * FROM bookmarks;'
-    # rs.each_with_object(Array.new) { |row, bookmarks|
-    #   bookmarks << Bookmarks.new(row['url'], row['title'], row['id'])
-    # }
     rs.map { |row| Bookmarks.new(row['url'], row['title'], row['id']) }
   end
 
@@ -21,8 +18,14 @@ class Bookmarks
 
   def self.find(id)
     con = db_connection
-    rs = con.exec "SELECT * FROM bookmarks WHERE id = '#{id}';"
+    rs = con.exec "SELECT * FROM bookmarks WHERE id = #{id};"
     Bookmarks.new(rs[0]['url'], rs[0]['title'], rs[0]['id']) unless rs.to_a.empty?
+  end
+
+  def self.edit(id, url, title)
+    con = db_connection
+    p "UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = #{id};"
+    con.exec "UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = #{id};"
   end
 
   attr_reader :url, :title, :id

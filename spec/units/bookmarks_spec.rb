@@ -52,11 +52,14 @@ describe Bookmarks do
     end
   end
   context '.update' do
-    xit 'can edit a bookmark' do
+    it 'can edit a bookmark' do
       bookmark = Bookmarks.create('http://www.yahoo.co.uk', 'Yahoo')
+      Bookmarks.edit(bookmark.id, 'http://www.yahoo.com', 'Yahoo US')
       last_bookmark = Bookmarks.all.last
-      Bookmarks.edit(last_bookmark.id)
-      last_bookmark = Bookmarks.all.last
+      
+      expect(last_bookmark.id).to eq('4')
+      expect(last_bookmark.title).to eq('Yahoo US')
+      expect(last_bookmark.url).to eq('http://www.yahoo.com')
     end
   end
 end

@@ -1,9 +1,12 @@
 require 'sinatra/base'
+require 'sinatra/flash'
 require 'pg'
 require_relative 'lib/bookmarks'
 
 class BookmarkApp < Sinatra::Base
-  enable :method_override
+  enable :method_override, :sessions
+  register Sinatra::Flash
+
   get '/' do
     erb(:index)
   end
@@ -18,9 +21,21 @@ class BookmarkApp < Sinatra::Base
   end
 
   get '/bookmarks/:id/edit' do
-    # Bookmarks.delete(params[:id])
-    redirect '/bookmarks'
+    @bookmark = Bookmarks.find(params[:id])
+    if @bookmark.nil?
+      flash[:notice] = 'Bookmark id not found'
+      flash[:notice]
+      # redirect '/bookmarks'
+    else
+      erb(:edit)
+    end
   end
+
+  patch '/bookmarks/:id' do
+    Bookmarks.edit(params[:id], params[:url], params[:title])
+    redirect to "/articles/#{@article.id}"
+  end
+
 
   delete '/bookmarks/:id/delete' do
     Bookmarks.delete(params[:id])
