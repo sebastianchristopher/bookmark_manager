@@ -10,7 +10,17 @@ feature 'bookmarks/edit' do
     expect(find_field('title').value).to eq('Makers')
   end
   scenario 'can edit a bookmark title' do
+    visit '/bookmarks'
+    first('.bookmark').click_button 'edit'
+    fill_in('title', with: 'Academy')
+    click_button 'Submit'
+    expect(page).to have_link('Academy', href: 'http://www.makersacademy.com')
   end
   scenario 'can edit a bookmark url' do
+    visit '/bookmarks'
+    first('.bookmark').click_button 'edit'
+    fill_in('url', with: 'http://www.makers.com')
+    click_button 'Submit'
+    expect(page).to have_link('Makers', href: 'http://www.makers.com')
   end
 end

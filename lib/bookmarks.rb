@@ -1,7 +1,7 @@
 class Bookmarks
   def self.all
     con = db_connection
-    rs = con.exec 'SELECT * FROM bookmarks;'
+    rs = con.exec 'SELECT * FROM bookmarks ORDER BY id;'
     rs.map { |row| Bookmarks.new(row['url'], row['title'], row['id']) }
   end
 
@@ -24,7 +24,6 @@ class Bookmarks
 
   def self.edit(id, url, title)
     con = db_connection
-    p "UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = #{id};"
     con.exec "UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = #{id};"
   end
 

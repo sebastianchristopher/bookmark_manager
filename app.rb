@@ -33,9 +33,8 @@ class BookmarkApp < Sinatra::Base
 
   patch '/bookmarks/:id' do
     Bookmarks.edit(params[:id], params[:url], params[:title])
-    redirect to "/articles/#{@article.id}"
+    redirect '/bookmarks'
   end
-
 
   delete '/bookmarks/:id/delete' do
     Bookmarks.delete(params[:id])
