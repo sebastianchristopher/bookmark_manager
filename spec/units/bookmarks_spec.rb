@@ -63,14 +63,15 @@ describe Bookmarks do
       expect(edited_bookmark.url).to eq('http://www.yahoo.com')
     end
   end
-  context 'valid url' do
-    it 'checks a valid url' do
-      url = 'http://www.google.co.uk'
-      expect(Bookmarks.valid_url?(url)).to be(true)
-    end
-    it 'checks an invalid url' do
-      url = 'google.co.uk'
-      expect(Bookmarks.valid_url?(url)).to be(false)
-    end
-  end
+  # private method - test in features
+  # context 'valid url' do
+  #   it 'checks a valid url' do
+  #     url = 'http://www.google.co.uk'
+  #     expect(Bookmarks.valid_url?(url)).to be(true)
+  #   end
+  #   it 'checks an invalid url' do
+  #     url = 'google.co.uk'
+  #     expect(Bookmarks.valid_url?(url)).to be(false)
+  #   end
+  # end
 end

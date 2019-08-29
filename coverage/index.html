@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-08-29T15:42:24+01:00">2019-08-29T15:42:24+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-08-29T16:07:58+01:00">2019-08-29T16:07:58+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -83,7 +83,7 @@
       <tr>
         <td class="strong"><a href="#4a0b02117b88f15418637de31f97e20543d00b74" class="src_link" title="spec/units/bookmarks_spec.rb">spec/units/bookmarks_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>76</td>
+        <td>77</td>
         <td>55</td>
         <td>55</td>
         <td>0</td>
@@ -925,67 +925,73 @@
           <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="66">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="66">
           
-          <code class="ruby">  context &#39;valid url&#39; do</code>
+          
+          <code class="ruby">  # private method - test in features</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="67">
           <span class="hits">1</span>
           
-          <code class="ruby">    it &#39;checks a valid url&#39; do</code>
+          <code class="ruby">  context &#39;valid url&#39; do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="68">
           <span class="hits">1</span>
           
-          <code class="ruby">      url = &#39;http://www.google.co.uk&#39;</code>
+          <code class="ruby">    it &#39;checks a valid url&#39; do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="69">
           <span class="hits">1</span>
           
+          <code class="ruby">      url = &#39;http://www.google.co.uk&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="70">
+          <span class="hits">1</span>
+          
           <code class="ruby">      expect(Bookmarks.valid_url?(url)).to be(true)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="70">
+        <li class="never" data-hits="" data-linenumber="71">
           
           
           <code class="ruby">    end</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="71">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    it &#39;checks an invalid url&#39; do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="72">
           <span class="hits">1</span>
           
-          <code class="ruby">      url = &#39;google.co.uk&#39;</code>
+          <code class="ruby">    it &#39;checks an invalid url&#39; do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="73">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(Bookmarks.valid_url?(url)).to be(false)</code>
+          <code class="ruby">      url = &#39;google.co.uk&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="74">
+        <li class="covered" data-hits="1" data-linenumber="74">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">      expect(Bookmarks.valid_url?(url)).to be(false)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="75">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="77">
           
           
           <code class="ruby">end</code>

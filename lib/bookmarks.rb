@@ -5,6 +5,7 @@ class Bookmarks
   end
 
   def self.create(url, title)
+    return false unless valid_url?(url)
     rs = DatabaseConnection.query("INSERT INTO bookmarks(url, title) VALUES('#{url}','#{title}') RETURNING *;")
     Bookmarks.new(rs[0]['url'], rs[0]['title'], rs[0]['id'])
   end
@@ -31,9 +32,7 @@ class Bookmarks
     @id = id
   end
 
-  # private_class_method
-
-  def self.valid_url?(url)
+  private_class_method def self.valid_url?(url)
     # (url =~ URI::regexp).nil? == false
     (url =~ URI::DEFAULT_PARSER.make_regexp).nil? == false
   end

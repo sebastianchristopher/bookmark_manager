@@ -39,11 +39,7 @@ class BookmarkApp < Sinatra::Base
   end
 
   post '/bookmarks' do
-    if Bookmarks.valid_url?(params[:url])
-      Bookmarks.create(params[:url], params[:title])
-    else
-      flash[:notice] = 'Bookmark id not found'
-    end
+    flash[:notice] = 'Bookmark id not found' unless Bookmarks.create(params[:url], params[:title])
     redirect '/bookmarks'
   end
 

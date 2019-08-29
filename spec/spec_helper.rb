@@ -19,7 +19,6 @@ require 'simplecov'
 require 'simplecov-console'
 require 'rspec-html-matchers'
 require_relative './setup_test_database.rb'
-# require_relative 'units/unit_helpers.rb'
 
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
@@ -29,10 +28,9 @@ require File.join(File.dirname(__FILE__), '..', 'app.rb')
 Capybara.app = BookmarkApp
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::Console,
-  # Want a nice code coverage website? Uncomment this next line!
-  SimpleCov::Formatter::HTMLFormatter
-])
+    SimpleCov::Formatter::Console,
+    SimpleCov::Formatter::HTMLFormatter
+  ])
 SimpleCov.start
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
