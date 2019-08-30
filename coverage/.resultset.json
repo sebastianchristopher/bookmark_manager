@@ -76,6 +76,19 @@
         null,
         null
       ],
+      "/Users/student/projects/bookmark_manager/spec/units/bookmark_tag_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/student/projects/bookmark_manager/spec/units/bookmarks_spec.rb": [
         1,
         null,
@@ -183,8 +196,28 @@
         1,
         null,
         null
+      ],
+      "/Users/student/projects/bookmark_manager/spec/units/tag_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1567111716
+    "timestamp": 1567154652
   }
 }
